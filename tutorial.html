@@ -25,7 +25,7 @@
     
             <p>If you are looking for is a simple embeddable version, this is something that we are working on, but is not ready for prime time just yet.</p>
     
-            <p>The API is currently severly undocumented, but can assure you that proper documentation is underway. For now, we hope that this tutorial will provide you with the knowhow necessary to create applications using appear.in.</p>
+            <p>The API is currently severely undocumented, but can assure you that proper documentation is underway. For now, we hope that this tutorial will provide you with the knowhow necessary to create applications using appear.in.</p>
         </section>
 
 
@@ -35,17 +35,17 @@
             </header>
             
             <section>
-                <p>In addition to our JavaScript librabry, we require you to include jQuery for the <code>postMessage</code> API to perform like require it to. We are looking into ways making this optional.</p>
+                <p>In addition to our JavaScript library, we require you to include jQuery for the <code>postMessage</code> API to perform like require it to. We are looking into ways making this optional.</p>
             </section>
     
         </article>
 
         <article>
             <header class="sticky">
-                <h2 id="checkforappearincompatibility">Check for appear.in compatability</h2>
+                <h2 id="checkforappearincompatibility">Check for appear.in compatibility</h2>
             </header>
             <section>
-                <p>The first thing we will have to do is to check if the client browser supports the technologies that is needed for appear.in to work properly. While appear.in itself will display an error message when a non-supported browser is detected, you might want to do this on your site instead to improve user experience. We have created a simple javascript library that you can use on your site. This library is loaded by including the following line <em>after</em> including jQuery.</p>
+                <p>The first thing we will have to do is to check if the client browser supports the technologies that is needed for appear.in to work properly. While appear.in itself will display an error message when a non-supported browser is detected, you might want to do this on your site instead to improve user experience. We have created a simple JavaScript library that you can use on your site. This library is loaded by including the following line <em>after</em> including jQuery.</p>
         
         <pre><code>&lt;script src="http://iswebrtcready.appear.in/apiv2.js"&gt;&lt;/script&gt;
         </code></pre>
@@ -69,7 +69,7 @@
         
                 <h3 id="caveats">Caveats</h3>
         
-                <p>While we will keep the <code>apiv2.js</code> file and its syntax and methods available for the forseeable future and we will try to let you know of any changes you should know about using <code>console.log</code> messages. That being said, this is a very early and experimental version of the API and the final version <em>will be changed</em>. A new API javascript library will be provided as soon as we feel it to be ready. <a href="http://eepurl.com/J-_Qr">Sign up to our mailing list</a> to be notified when this happens.</p>
+                <p>While we will keep the <code>apiv2.js</code> file and its syntax and methods available for the foreseeable future and we will try to let you know of any changes you should know about using <code>console.log</code> messages. That being said, this is a very early and experimental version of the API and the final version <em>will be changed</em>. A new API JavaScript library will be provided as soon as we feel it to be ready. <a href="http://eepurl.com/J-_Qr">Sign up to our mailing list</a> to be notified when this happens.</p>
                 
             </section>
         </article>
@@ -81,13 +81,13 @@
             
             <section>
                 
-                <p>After making sure that the client browser support appear.in, we will go on to create a room that you can use. Our API does not yet expose the ability to create rooms programatically (2), so for now we'll have to exploit the ability of appear.in to create a room from any given string. By creating a suffiently long randomly generated string, this will give us a statistical "guarantee" that the room is unoccupied. The longer the string, the smaller the chance of creating a room that is already occupied. We'll create a room name with thirty alphanumeric characters, which will give us 36<sup>30</sup>, or a few tredecillions shy of 49 quattuordecillion, possible character combinations.</p>
+                <p>After making sure that the client browser support appear.in, we will go on to create a room that you can use. Our API does not yet expose the ability to create rooms programatically (2), so for now we'll have to exploit the ability of appear.in to create a room from any given string. By creating a sufficiently long randomly generated string, this will give us a statistical "guarantee" that the room is unoccupied. The longer the string, the smaller the chance of creating a room that is already occupied. We'll create a room name with thirty alphanumeric characters, which will give us 36<sup>30</sup>, or a few tredecillions shy of 49 quattuordecillion, possible character combinations.</p>
         
 <pre><code>var randomRoomNameGenerator = function () {
     // predefine the alphabet used.
     var alphabet = 'qwertyuiopasdfghjklzxcvbnm1234567890';
 
-    // set the lenght of the room name
+    // set the length of the room name
     var roomNameLength = 30;
 
     // initialize the room name as an empty string
@@ -110,7 +110,7 @@
 }
 </code></pre>
 
-        <p>This method will return a valid roomname, ready to be inserted into an achor tag or even an iframe.</p>
+        <p>This method will return a valid roomname, ready to be inserted into an anchor tag or even an iframe.</p>
         </section>
         </article>
 
@@ -180,7 +180,7 @@
                         // predefine the alphabet used.
                         var alphabet = 'qwertyuiopasdfghjklzxcvbnm1234567890';
 
-                        // set the lenght of the room name
+                        // set the length of the room name
                         var roomNameLength = 30;
 
                         // initialize the room name as an empty string
