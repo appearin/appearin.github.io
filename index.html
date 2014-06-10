@@ -2,76 +2,89 @@
 
 <html>
     <head>
-        <title>Dev pages</title>
+        <title>Appear.in dev pages</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        
-        
+
         <div class="wrapper" id="main-wrapper">
-        
-        <header class="main-header">
-            <div class="logo">
-                <img src="logo.svg" alt="">
-                <p>appear.in</p>
-            </div>
-            <p class="back-link"><a href="https://appear.in">Back to appear.in</a></p>
-        </header>
-            
-            <main>
-                <h1 id="appearinapi">Appear.in API</h1>
-            
+
+            <header class="main-header">
+                <div class="content">
+                        <div class="logo">
+                            <a href="https://appear.in" class="undecorated">
+                                <img src="logo.svg" alt="">
+                                <p>appear.in</p>
+                            </a>
+                        </div>
+
+                    <nav class="sitenav">
+                        <ul>
+                            <li>
+                                <a href="https://appear.in/information/team" class="undecorated">About</a>
+                            </li><li>
+                                <a href="http://blog.appear.in" class="undecorated">Blog</a>
+                            </li><li>
+                                <a href="https://appear.in/information/faq" class="undecorated">FAQ</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="content">
+                <h1 id="appearinapi">Appear.in Developer API (beta)</h1>
+
                 <section>
                     <p>While we explore the possibilites and limitations present in what exists now, we only provide an API for our sub-project <a href="http://iswebrtcready.appear.in">iswebrtcready.appear.in</a>. With this API you can determine whether or not the client browser is capable of running appear.in, that is: <em>does the browser you run at this very moment support the technologies we (and other services like ours) require?</em></p>
                 </section>
-        
+
             <article>
-                <header class="sticky">    
+                <header>
                     <h2>Tutorial</h2>
                 </header>
-                
+
                 <section>
                     <p>We have created a simple tutorial to help you get started <a href="tutorial.html">here</a>.</p>
                 </section>
             </article>
-            
+
                 <article>
-                <header class="sticky">
+                <header>
                     <h2 id="whyitwasmade">Why it was made</h2>
                 </header>
-        
+
                 <section>
-                    
                 <p>As developers of <a href="https://appear.in">appear.in</a>, we are receiving a lot of feedback from users. A whole lot of them is (quite naturally) concerned with browser support. To be able to troubleshoot our customers' browsers quickly, and test the capabilities of new browsers quickly ourselves, we made a public page that everyone can use. This can be found on <a href="http://iswebrtcready.appear.in">iswebrtcready.appear.in</a>. This page has proven to be quite useful, and we have even seen the test page sent between browser vendors as a thing to be used to be able to recognize the capabilities of their browsers.</p>
-        
+
                 <p>We have now made the service even more available by creating an API that can be used in your applications. We are already in process of integrating it ourselves on <a href="https://appear.in">appear.in</a>.</p>
-    
+
                 </section>
             </article>
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="howitworks">How it works</h2>
                 </header>
                 <section>
-                    
+
             <p>It starts by embedding a small <code>iframe</code> object in the code, which loads up a small version of the <a href="http://iswebrtcready.appear.in">iswebrtcready.appear.in</a> page, including the JavaScript code that runs on the full site (which is built using the same API (not the large picture, but it soon will be)).</p>
-    
+
             <p>When the iframed page has loaded, it will start responding to the methods found in our  script file, called from your code. The provided <code>apiv2.js</code> (name not final) file exposes methods that lets you respond to an incompatible client browser, allowing for graceful degradation of the user experience. These tests (soon) forms the basis for the feature detection on <a href="https://appear.in">appear.in</a>.</p>
                 </section>
             </article>
-    
+
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="embeddability">Embeddability</h2>
                 </header>
                 <section>
-                    
+
             <p><a href="https://appear.in">appear.in</a> rooms are already embeddable, but not in a way that is as easy as we want it to be. We are working on improving the usability of this process, by creating an embeddable widget that can be used anywhere on the web. For now, append the URL string with '?lite' for a cleaner version of <a href="https://appear.in">appear.in</a> created for the purpose of embedding. </p>
                 </section>
             </article>
-    
+
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="isthisopensource">Is this open source?</h2>
                 </header>
                 <section>
@@ -80,68 +93,76 @@
                 Do however keep in mind that the code is rather unfinished, and it will change, but you can have a look at it if you want.  We are also looking into the feasibility to include the tests for <a href="http://iswebrtcready.appear.in">iswebrtcready.appear.in</a> into dedicated feature detection frameworks such as <a href="http://modernizr.com/">modernizr</a>. We want the world to benefit from the fruits of our labour.</p>
                 </section>
             </article>
-            
+
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="isthistheappearinapi">Is this the appear.in API?</h2>
                 </header>
                 <section>
-                    
+
             <p>Yes. Well, almost. Soon. This is not the full <a href="https://appear.in">appear.in</a> API, but rather a sneak developer preview for those who are interested in building apps today. We have built a couple of example apps that can provide you with some inspiration. All of the example applications are realized using code that is available to everyone today.</p>
                 </section>
             </article>
-            
+
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="exampleapplications">Example applications</h2>
                 </header>
                 <section>
-                    
+
                 <article class="example">
                     <h3>Githut</h3>
                     <p><a href="http://appearin.github.com/githut">Githut</a>
                 </article>
-                
+
                 <article>
                     <h3>Appearoulette</h3>
                     <a href="http://appearoulette.com">appearoulette</a></p>
                 </article>
                 </section>
             </article>
-            
+
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="thefutureoftheapi">The future of the API</h2>
                 </header>
-                
+
                 <section>
-                    
-    
+
+
             <p>Our first priority for the evolution of the API is the creation of a proper API for <a href="https://appear.inc">appear.in</a>. What this entails, exactly, is still a matter of internal debate. One example of something that will be included in this API is the ability to have us handle the naming and creation of a room. <a href="https://appear.in">appear.in</a> today allows for conjuring rooms into existence whenever needed by allowing for any randomly generated string being a room name, these room names are not guaranteed to be unique and the room might thus already be taken. Highly improbable (one might even say statistically impossible), but not guaranteed. An API provided by us would generate rooms guaranteed to be available and unique. More snassy naming scheme provided by us might also be preferrable to the output of you generic random string generator.</p>
                 </section>
             </article>
-            
+
             <article>
-                <header class="sticky">
+                <header>
                     <h2 id="interested">Interested?</h2>
                 </header>
                 <section>
-                    
+
             <p>Please let us know! Send us an email at <a href="&#109;&#x61;&#105;&#108;&#116;&#111;:&#x66;&#101;&#101;&#x64;&#98;&#97;c&#x6b;&#x40;&#x61;&#112;&#x70;&#101;&#x61;&#114;&#x2e;&#105;&#110;">&#x66;&#101;&#101;&#x64;&#98;&#97;c&#x6b;&#x40;&#x61;&#112;&#x70;&#101;&#x61;&#114;&#x2e;&#105;&#110;</a> and we'll let you know of drastic changes.</p>
-    
+
             <p>During these early stages, the API is rather volatile, and evolving rapidly. This means that the methods and tests available might (and will) change without much notice. If you would like to be informed when this happens, leave us your email address and we promise to do our very best. Similarly, we are still exploring what is neccessary for services to build upon <a href="https://appear.in">appear.in</a>, and while we have a general idea, we need your help to develop these ideas into a final API. If you as a developer has feature requests or ideas, please let us know, and we will be ever grateful.</p>
-                </section>    
+                </section>
             </article>
-            
-            <article>
-                <p><a href="#main-wrapper">Back to top</a></p>
-            </article>
-            
+
         </main>
-        
+
         <footer>
-            <a href="https://appear.in">Appear.in</a>
+            <div class="content">
+            <a href="https://appear.in">Appear.in – a product of Telenor Digital</a>
+            </div>
         </footer>
         </div>
+
+        <script type="text/javascript">
+          (function(d) {
+            var config = {
+              kitId: 'foj7ell',
+              scriptTimeout: 3000
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          })(document);
+        </script>
     </body>
 </html>

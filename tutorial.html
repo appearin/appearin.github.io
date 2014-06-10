@@ -1,248 +1,159 @@
+<!doctype html>
+
 <html>
-    
     <head>
         <link rel="stylesheet" href="css/styles.css">
+        <title>Appear.in API tutorial</title>
     </head>
-    
+
     <body>
-        
         <div class="wrapper">
         <header class="main-header">
-            <div class="logo">
-                <img src="logo.svg" alt="">
-                <p>appear.in</p>
+            <div class="content">
+                    <div class="logo">
+                        <a href="https://appear.in" class="undecorated">
+                            <img src="logo.svg" alt="">
+                            <p>appear.in</p>
+                        </a>
+                    </div>
+
+                <nav class="sitenav">
+                    <ul>
+                        <li>
+                            <a href="https://appear.in/information/team" class="undecorated">About</a>
+                        </li><li>
+                            <a href="http://blog.appear.in" class="undecorated">Blog</a>
+                        </li><li>
+                            <a href="https://appear.in/information/faq" class="undecorated">FAQ</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <p class="back-link"><a href="https://appear.in">Back to appear.in</a></p>
         </header>
-            
-            
-            <main>
+
+        <main class="content">
 
         <h1 id="tutorial">Tutorial</h1>
-        
+
         <section>
-            <p>Hi and welcome to the first appear.in API tutorial. Here, we'll create a simple web application that creates and embeds an appear.in room directly on your site.</p>
-    
+            <p class="ingress">Hi! Welcome to the first appear.in API tutorial. Here, we'll create a simple web application that creates and embeds an appear.in room directly on your site.</p>
+
             <p>If you are looking for is a simple embeddable version, this is something that we are working on, but is not ready for prime time just yet.</p>
-    
+
             <p>The API is currently severely undocumented, but can assure you that proper documentation is underway. For now, we hope that this tutorial will provide you with the knowhow necessary to create applications using appear.in.</p>
         </section>
 
 
         <article>
-            <header class="sticky">
+            <header>
                 <h2 id="requirements">Requirements</h2>
             </header>
-            
+
             <section>
                 <p>In addition to our JavaScript library, we require you to include jQuery for the <code>postMessage</code> API to perform like require it to. We are looking into ways making this optional.</p>
             </section>
-    
+
         </article>
 
         <article>
-            <header class="sticky">
+            <header>
                 <h2 id="checkforappearincompatibility">Check for appear.in compatibility</h2>
             </header>
             <section>
                 <p>The first thing we will have to do is to check if the client browser supports the technologies that is needed for appear.in to work properly. While appear.in itself will display an error message when a non-supported browser is detected, you might want to do this on your site instead to improve user experience. We have created a simple JavaScript library that you can use on your site. This library is loaded by including the following line <em>after</em> including jQuery.</p>
-        
-        <pre><code>&lt;script src="http://iswebrtcready.appear.in/apiv2.js"&gt;&lt;/script&gt;
-        </code></pre>
-        
-        <p>This lets you run our test battery by running the <code>API.isApperinCompatible()</code> method.</p>
-        
-        <pre><code>API.isAppearinCompatible(function (data) {
-            // the call was successful
-            window.console.log(data);
-        }, function (error) {
-            // the call was unsuccessful
-            window.console.log(error);
-        })
-        </code></pre>
-        
+
+            <script src="https://gist.github.com/tkbremnes/2e647c787b8484fc1e31.js"></script>
+
+        <p>This lets you run our test battery by running the <code>API.isAppearinCompatible()</code> method.</p>
+
+        <script src="https://gist.github.com/tkbremnes/f5dd537763e283844832.js"></script>
+
                 <p>This will run all the tests available in our test battery (1) and return a <code>true</code> or <code>false</code> boolean, as well as an array containing the result of all the tests that has been run. Refer to the output of the <code>window.console.log(data)</code> for the complete content until the API documentation is finished.</p>
-        
+
                 <h3 id="technicaldeets">Technical deets</h3>
-        
+
                 <p>The tests are run by embedding a minimal iframed version of the <a href="http://iswebrtcready.appear.in">iswebrtcready.appear.in</a> test web site which will run all of our tests and report the results back to your site. We plan to package these test for you to put on your site without the need for embedding our tests.</p>
-        
+
                 <h3 id="caveats">Caveats</h3>
-        
+
                 <p>While we will keep the <code>apiv2.js</code> file and its syntax and methods available for the foreseeable future and we will try to let you know of any changes you should know about using <code>console.log</code> messages. That being said, this is a very early and experimental version of the API and the final version <em>will be changed</em>. A new API JavaScript library will be provided as soon as we feel it to be ready. <a href="http://eepurl.com/J-_Qr">Sign up to our mailing list</a> to be notified when this happens.</p>
-                
+
             </section>
         </article>
 
         <article>
-            <header class="sticky">
+            <header>
                 <h2 id="createtheroom">Create the room</h2>
             </header>
-            
+
             <section>
-                
+
                 <p>After making sure that the client browser support appear.in, we will go on to create a room that you can use. Our API does not yet expose the ability to create rooms programatically (2), so for now we'll have to exploit the ability of appear.in to create a room from any given string. By creating a sufficiently long randomly generated string, this will give us a statistical "guarantee" that the room is unoccupied. The longer the string, the smaller the chance of creating a room that is already occupied. We'll create a room name with thirty alphanumeric characters, which will give us 36<sup>30</sup>, or a few tredecillions shy of 49 quattuordecillion, possible character combinations.</p>
-        
-<pre><code>var randomRoomNameGenerator = function () {
-    // predefine the alphabet used.
-    var alphabet = 'qwertyuiopasdfghjklzxcvbnm1234567890';
 
-    // set the length of the room name
-    var roomNameLength = 30;
-
-    // initialize the room name as an empty string
-    var roomName = '';
-
-    // repeat this 30 times
-    for (var i=0; i&lt;roomNameLength; i++) {
-        // get a random character from the alphabet
-        var character = alphabet[Math.round(Math.random()*(alphabet.length-1))];
-
-        // add the character to the roomName
-        roomName = roomName + character;
-    }
-
-    // pre- and append appear.in URL elements
-    roomName = 'https://appear.in/' + roomName + '?lite';
-
-    // return the result
-    return roomName;
-}
-</code></pre>
+                <script src="https://gist.github.com/tkbremnes/b8f7cbf96aa15d994c26.js"></script>
 
         <p>This method will return a valid roomname, ready to be inserted into an anchor tag or even an iframe.</p>
         </section>
         </article>
 
         <article>
-            <header class="sticky">
+            <header>
                 <h2 id="embedappearin">Embed appear.in</h2>
             </header>
             <section>
-                
+
                 <p>Appear.in rooms are possible to embed inside ordinary iframes, making it possible to create entire video based services using appear.in rooms as their base. To do this we'll simply set the iframe <code>src</code> attribute to the generated room name.</p>
 
-<pre><code>&lt;html&gt;
-    &lt;body&gt;
-        &lt;h1&gt;My awesome service&lt;/h1&gt;
-        &lt;button onclick="createRoom()"&gt;Create room&lt;/button&gt;
+                <script src="https://gist.github.com/tkbremnes/f7a4fba22b52cc9aa9d4.js"></script>
 
-        &lt;iframe id="appearin-room"&gt;
 
-        &lt;script&gt;
-            // create the room on button press
-            window.createRoom = function () {
-                // setting a room name. Pair this with the random room generator code above for real power
-                var roomName = 'this-is-a-room';
-                roomName = 'https://appear.in/' + roomName + '?lite';
-
-                // set the iframe source to load the room
-                var iframe = document.getElementById('appearin-room')
-                iframe.setAttribute('src', roomName);
-            }
-        &lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-        
                 <h3 id="userexperience">User experience</h3>
-        
+
                 <p>Browsers will display a camera access request dialog the first time a web site requests access to it, but seeing as the camera access dialog comes from the appear.in domain, this means that if the user has ever allowed camera access to appear.in the camera and microphone will automatically turn on when the iframe has loaded. However, we have implemented a user consent dialogue to prevent users from automatically broadcasting their face without their expressed consent.</p>
             </section>
         </article>
 
-        
+
         <article>
-            <header class="sticky">
+            <header>
                 <h2 id="completecode">Complete code</h2>
             </header>
-        
+
         <section>
-            
-<pre><code>&lt;html&gt;
-    &lt;body&gt;
-        &lt;h1&gt;My awesome service&lt;/h1&gt;
-        &lt;p&gt;Is appear.in compatible? &lt;span id="compatability-test-result"&gt;Maybe&lt;/span&gt;&lt;/p&gt;
-        &lt;button id="create-room-button"&gt;Create room&lt;/button&gt;
-
-        &lt;iframe id="appearin-room"&gt;&lt;/iframe&gt;
-
-
-
-        &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;
-        &lt;script src="http://iswebrtcready.appear.in/apiv2.js"&gt;&lt;/script&gt;
-
-        &lt;script&gt;            
-            document.getElementById('create-room-button').onclick = function () {
-                // create the room on button press
-                    var randomRoomNameGenerator = function () {
-                        // predefine the alphabet used.
-                        var alphabet = 'qwertyuiopasdfghjklzxcvbnm1234567890';
-
-                        // set the length of the room name
-                        var roomNameLength = 30;
-
-                        // initialize the room name as an empty string
-                        var roomName = '';
-
-                        // repeat this 30 times
-                        for (var i=0; i&lt;roomNameLength; i++) {
-                            // get a random character from the alphabet
-                            var character = alphabet[Math.round(Math.random()*(alphabet.length-1))];
-
-                            // add the character to the roomName
-                            roomName = roomName + character;
-                        }
-
-                        // pre- and append appear.in URL elements
-                        roomName = 'https://appear.in/' + roomName + '?lite';
-
-                        // return the result
-                        return roomName;
-                    }
-
-                    // setting a room name. Pair this with the random room generator code above for real power
-                    var roomName = randomRoomNameGenerator();
-
-                    // set the iframe source to load the room
-                    var iframe = document.getElementById('appearin-room');
-                    iframe.setAttribute('src', roomName);
-            }
-
-            API.isAppearinCompatible(function (data) {
-                if (data.isSupported) {
-                    document.getElementById('compatability-test-result').innerHTML = 'Yes';
-                }
-                else {
-                    document.getElementById('compatability-test-result').innerHTML = 'No';
-                }
-            });
-        &lt;/script&gt;
-
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+            <script src="https://gist.github.com/tkbremnes/6b4e61ff6a79e6265a9a.js"></script>
         </section>
         </article>
 
-        
+
         <article>
-            <header class="sticky">
+            <header>
                 <h2 id="footnotes">Footnotes</h2>
             </header>
-            
+
             <section>
                 <p>(1) We are working on making it possible to run single test on your site if you so wish, as well as list all the tests available. Soon, very soon.</p>
                 <p>(2) We are planning to expand our API to be able to create shorter, mnemonic rooms guaranteed to be unique and unoccupied, but this is not implemented just yet.</p>
             </section>
         </article>
-        
+
         </main>
-        
+
         <footer>
-            <a href="https://appear.in">Appear.in</a>
+            <div class="content">
+            <a href="https://appear.in">Appear.in – a product of Telenor Digital</a>
+            </div>
         </footer>
         </div>
+
+        <script type="text/javascript">
+          (function(d) {
+            var config = {
+              kitId: 'foj7ell',
+              scriptTimeout: 3000
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          })(document);
+        </script>
+
     </body>
 </html>
