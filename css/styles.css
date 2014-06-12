@@ -8,9 +8,21 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 
+h1 {
+    font-size: 70px;
+}
+
 #tutorial {
     font-size: 7rem;
     margin-bottom: 1rem;
+}
+
+.chapter {
+    margin: 4.7rem 0;
+}
+
+.chapter:last-of-type {
+    margin-bottom: 200px;
 }
 
 a {
@@ -36,6 +48,18 @@ p {
 
 * {
     box-sizing: border-box;
+}
+
+ul.decorated {
+    padding-left: 18px;
+}
+ul.decorated li {
+    margin: 1em 0;
+    padding-left: 12px;
+}
+
+ul.decorated li a {
+    font-style: italic;
 }
 
 article {
@@ -187,21 +211,53 @@ a.undecorated {
     right: .5em;
 }
 
+/* Button styles, lazily copied from the main page */
 
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
 
+.primary-button {
+    border-radius: 4px;
+    vertical-align: top;
+    text-align: center;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    margin: 0;
+    transition: color .1s,background .1s;
+    border-top: 1px solid #98bbab;
+    color: #fff;
+    background: #67c098;
+    box-shadow: none;
+    height: 4rem;
+    font-size: 1.8rem;
+    padding: 0 1.2rem;
+    line-height: 1;
+}
+
+.primary-button:hover {
+    background: #85ae9b;
+    border-top: 1px solid #8eae9f;
+}
+
+.primary-button:hover:active {
+    background: #6c9e87;
+    border-top: 1px solid #6c9e87;
+    box-shadow: none;
+    line-height: 2.6em;
+}
+
+.primary-button:focus {
+    outline: 0;
+}
 
 /* GIST */
-
-.gist .gist-file {
-    /*border: none !important;*/
-}
 .gist .file-data,
 .gist .gist-file .line-data {
     background: #ececec;
-}
-
-.gist .gist-file .gist-data .line-numbers {
-    /*background: #e0e0e0 !important;
-    color: #807e7a !important;
-    border-right: none !important;*/
 }
