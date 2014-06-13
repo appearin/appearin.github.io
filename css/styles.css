@@ -237,12 +237,14 @@ input, button, select, textarea {
     height: 4rem;
     font-size: 1.8rem;
     padding: 0 1.2rem;
-    line-height: 1;
+    line-height: 2;
+    display: inline-block;
 }
 
 .primary-button:hover {
     background: #85ae9b;
     border-top: 1px solid #8eae9f;
+    text-decoration: none;
 }
 
 .primary-button:hover:active {
