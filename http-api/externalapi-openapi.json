@@ -89,9 +89,9 @@
                   "roomNamePrefix": {
                     "type": "string",
                     "maxLength": 40,
-                    "pattern": "[/][a-zA-Z0-9]{0,39}",
+                    "pattern": "[/][a-z0-9]{0,39}",
                     "example": "/example-prefix",
-                    "description": "This will be used as the prefix for the room name. Note that the room name needs to start with /\nif it is provided.\n"
+                    "description": "This will be used as the prefix for the room name. Note that the room name needs to start with /\nif it is provided and should be lower-case.\n"
                   },
                   "roomMode": {
                     "type": "string",
@@ -101,7 +101,7 @@
                       "normal"
                     ],
                     "example": "normal",
-                    "description": "The mode of the created transient room.\n`normal` is the default room mode and should be used for meetings up to 4 partipants.\n`group` should be used for meetings that require more than 4 partipants.\n"
+                    "description": "The mode of the created transient room.\n`normal` is the default room mode and should be used for meetings up to 4 participants.\n`group` should be used for meetings that require more than 4 participants.\n"
                   },
                   "startDate": {
                     "type": "string",
