@@ -2,16 +2,16 @@
   <head>
     <meta charset=utf-8>
     <title>Whereby - Developer documentation</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
     <link href="https://d2qulvgqu65efe.cloudfront.net/favicon.png" rel="icon" type="image/png" sizes="60x60">
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Italic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Medium.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-MediumItalic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBold.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBoldItalic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleDisplayCondensed-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleText-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css" rel="stylesheet" type="text/css" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Italic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Medium.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-MediumItalic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBold.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBoldItalic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleDisplayCondensed-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleText-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div class="wrapper">
@@ -23,63 +23,176 @@
           <a href="http-api">HTTP API reference</a>
         </nav>
         <div style="margin-top: 24px;">
-          <h1 style="margin-bottom:48px"">Whereby developer guide</h1>
+          <h1 style="margin-bottom:48px">Whereby developer guide</h1>
+
           <h2 id="getting_started">Getting started</h2>
           <p>
-            In order to integrate with Whereby, there are a couple of things
-            which needs to be set up. A Whereby account with a subdomain API key
-            - This key allows you to create meetings on the Whereby service.
-            <a href="https://whereby.com/information/product-api/">Get in touch</a> if you’re missing this. If you are planning to embed
-            in another web service, we will have to whitelist the hostname of
-            your service. While in development however, you can use a Chrome
-            extension to bypass this requirement locally on a development
-            machine:
+            We have two different parts to the API. You can use them together,
+            or just one of them:
           </p>
-          <a
-            href="https://chrome.google.com/webstore/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden"
-            >Chrome extension</a
-          >
+
+          <ol>
+            <li>
+              <a href="#creating_meetings" class="internal"
+                >Creating meetings</a>
+              using the HTTP meetings API.
+            </li>
+
+            <li>
+              <a href="#embedding_meetings" class="internal"
+                >Embedding meetings</a>
+              using an &lt;iframe&gt; or in a mobile app
+            </li>
+          </ol>
+
+          <p>
+            In order to integrate with Whereby, there are a couple of things
+            which needs to be set up. For creating meetings
+            <em>you'll need an API key</em>. If you are planning to embed in
+            another web service, we will have to
+            <em>whitelist the domains</em> you'll use (except for local
+            development/testing).
+          </p>
+          <p>
+            <a href="https://whereby.com/information/product-api/"
+              >Get in touch</a>
+            when you need this.
+          </p>
+
+          <h2 id="creating_meetings">1. Creating meetings</h2>
+
           <h3>Verifying your API key works</h3>
           <p>
             Once you have retrieved an API key from Whereby, you can verify it
-            is correct by issuing the following command in your terminal
+            is correct by issuing the following command in your terminal:
           </p>
-          <code class="block"
-            >curl -H "Authorization: Bearer YOUR_API_KEY"
-            https://api.whereby.dev/v1/meetings/1
+          <code class="block">
+            curl -H "Authorization: Bearer <em>YOUR_API_KEY</em>" https://api.whereby.dev/v1/meetings/1
           </code>
-          <p>A <strong>200 or 404</strong> response status indicates your key is working. A <strong>401</strong> response means the provided key is incorrect.</p>
-          <h3>Verify your domain is whitelisted</h3>
-          <code class="block">curl --head 'https://YOUR_SUBDOMAIN.whereby.com?iframeSource=YOUR_SUBDOMAIN'</code>
-          <p>If whitelisted, the response of this command should list out your service url in the <strong>Content-Security-Policy</strong> section.</p>
-          <h2 id="creating_meetings">Creating meetings</h2>
           <p>
-            Meetings are created by sending sending an HTTP request to our servers. Reference our <a href="http-api/#/paths/~1meetings/post">http api docs</a> to learn how to format your requests. If successful, the
-            response will contain the url of the newly created meeting, which
-            can be shared through email, SMS etc, or embedded into a website as
-            described below.
+            A <strong>200 or 404</strong> response status indicates your key is
+            working. A <strong>401</strong> response means the provided key is
+            incorrect.
           </p>
-          <h2 id="embedding_meetings">Embedding meetings</h2>
+          <h3>Using the meetings API</h3>
           <p>
-            Meeting urls created using our API can be embedded in two ways; in a native app, or in an existing website.
-            Either approach allows for customization of the embedded experience by adding query parameters to the room url.  
+            Meetings are created by sending sending an HTTP request to our
+            servers. Reference our
+            <a href="http-api/#/paths/~1meetings/post">http api docs</a> to
+            learn how to format your requests. If successful, the response will
+            contain the URL of the newly created meeting, which can be shared
+            through email, SMS etc, or embedded into a website as described
+            below.
           </p>
-          <h3>Url parameters</h3>
-          <ul>
-            <li>?embed - Apply default UI adjustments for embed scenarios</li>
-            <li>?displayName - Set displayname of participant</li>
-            <li>?audio=off - Enter meeting with audio off</li>
-            <li>?video=off - Enter meeting with video off</li>
-            <li>?chat=&lt;on&gt; - Enable chat in embedded meeting</li>
-            <li>?screenshare=&lt;on&gt; - Enable screenshare in embedded meeting</li>
-          </ul>
 
-          <h3 id=native>Embedding in native apps</h3>
+          <h2 id="embedding_meetings">2. Embedding meetings</h2>
+          <p>
+            You can embed Whereby in your own web service or in your native app.
+          </p>
+          <p>
+            The embed source needs to be a Whereby meeting URL (also called room
+            link). You can create that manually (easy for testing), or use the
+            HTTP API to create the required roomUrl.
+          </p>
+
+          <p>
+            Either approach allows for customization of the embedded experience
+            by adding query parameters to the room URL.
+          </p>
+
+          <h3 id="website">Embedding in a website</h3>
+          <p>
+            For initial development install an extension like
+            <a
+              href="https://chrome.google.com/webstore/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden"
+              >disable CSP (Chrome)</a>.
+            When you're ready for production or staging, we'll need to
+            whitelist the domains.
+          </p>
+
+          <p>Your development environment will still need to use https.</p>
+
+          <p>
+            The following example shows how to embed a Whereby meeting for
+            subdomain <code><em>example</em></code> and room
+            <code><em>room</em></code> in a website:
+          </p>
+          <code class="block">
+            &lt;iframe
+            src="https://<em>example</em>.whereby.com/<em>room</em>?embed&amp;iframeSource=<em>example</em>"<br>
+            allow="camera; microphone; fullscreen; speaker"&gt;&lt;/iframe&gt;
+          </code>
+          <p>
+            The <code>iframeSource</code> parameter is required and must be set
+            to your Whereby subdomain, not your domain. The
+            <code>embed</code> is not required, you can find
+            <a href="#params" class="internal"
+              >more URL parameters to customize Whereby</a>
+            further down.
+          </p>
+
+          <h4 id=whitelisting>Whitelisting your domains</h4>
+          <p>
+            Once you want your embed to work without a CSP-disabling extension,
+            you'll need your domains whitelisted. If your web service is at
+            <code>https://www.example.com</code>, you can provide that, or ask
+            us to whitelist a wildcard, like <code>https://*.example.com</code>
+            which will work for <code>www</code> but also any other subdomain
+            directly under the main domain. It is not recursive, but will work
+            with any address after the hostname.
+          </p>
+
+          <p>
+          Do note, however, that if your website is <code>https://example.com</code>,
+          you need to whitelist this specifically as the <code>*.</code>
+          wildcard won't catch that. So if you want to use Whereby on both
+          <code>https://staging.example.com/my-page</code> and on
+          <code>https://example.com/production-page/123</code>, you need to ask
+          us to whitelist both, like:
+          <code class=block>https://example.com https://*.example.com</code>
+          </p>
+
+          <h4 id=whitelisting>Verify your domain is whitelisted</h4>
+          <p>
+            <code class="block">
+              curl --head 'https://<em>YOUR_SUBDOMAIN</em>.whereby.com?iframeSource=<em>YOUR_SUBDOMAIN</em>'
+            </code>
+          </p>
+
+          <p>
+            If whitelisted, the response of this command should list out your
+            service URL in the <strong>Content-Security-Policy</strong> section.
+          </p>
+
+          <p>You must pass
+          <code>?iframeSource=<em>YOUR_WHEREBY_SUBDOMAIN</em></code> to the room
+          URL to instruct Whereby servers to pass required CSP headers to the
+          browser.
+
+          <p>On the iframe itself, you need to set the <code>allow</code>
+          attribute to allow Whereby to get access to cam / mic:
+          <code>allow="camera; microphone; fullscreen; speaker"</code>.
+
+          <p>You also need to use https (also in development) for some browsers to
+          give you access all the web APIs Whereby use.
+
+          <h3 id=params>URL parameters</h3>
+          <table>
+            <tr><th><code>?embed</code>                      <td>Apply default UI adjustments for embed scenarios</tr>
+            <tr><th><code>?displayName</code>                <td>Set displayname of participant</tr>
+            <tr><th><code>?audio=off</code>                  <td>Enter meeting with audio off</tr>
+            <tr><th><code>?video=off</code>                  <td>Enter meeting with video off</tr>
+            <tr><th><code>?chat=&lt;on|off&gt;</code>        <td>Enable/disable chat</tr>
+            <tr><th><code>?screenshare=&lt;on|off&gt;</code> <td>Enable/disable screenshare</tr>
+          </table>
+
+          <h3 id="native">Embedding in native apps</h3>
           <h4>Android</h4>
           <p>
-            Embedding in an Android app requires use of the <a
-              href="https://developer.android.com/reference/android/webkit/WebView">WebView</a>
-            class.
+            Embedding in an Android app requires use of the
+            <a
+              href="https://developer.android.com/reference/android/webkit/WebView"
+              >WebView</a> class.
           </p>
           <p>
             You need to use the <code>?skipMediaPermissionPrompt</code> query
@@ -97,30 +210,14 @@
             <li>Redirect to mobile Safari</li>
             <li>Use SFSafariViewControlleri</li>
           </ul>
-          <h3 id=website>Embedding in a website</h3>
-          <p>
-            Whereby meetings are embedded into other web services by use of an
-            iframe. The source of the iframe needs to be a Whereby meeting url,
-            which is obtained from our API. In addition to the url parameters described above, the following query
-            parameters will have to be added:
-          </p>
-          <h4>Required url parameters</h4>
-          <ul>
-              <li><code>?iframeSource=YOUR_WHEREBY_SUBDOMAIN</code> - Instruct Whereby servers to pass required CSP headers to the browser</li>
-          </ul>
-          <p>
-            On the iframe itself, there are a couple of attributes which needs to be set in order to allow Whereby to get access to cam / mic.
-          </p>
-          <h4>Required iframe attributes</h4>
-          <ul>
-              <li><code>allow="camera;microphone;fullscreen;speaker"</code></li>
-          </ul>
-          <h4>Example</h4>
-          <p>The following example shows how to embed a Whereby meeting for subdomain <code>example</code> in a website</p>
-          <code class="block">
-            &lt;iframe src="https://YOUR_SUBDOMAIN.whereby.com/API_GENERATED_MEETING_ID?embed&iframeSource=YOUR_SUBDOMAIN" allow="camera;microphone;fullscreen;speaker" /&gt;
-          
-          </code>
+          <p>If you need your own UI at the same time as the
+          Whereby-meeting, it would be possible to use
+          <em>SFSafariViewControlleri</em> to embed a website where you show
+          your UI and again use an iframe to embed Whereby.
+
+          <h4>Customizing the room</h4>
+          <p>You can <a href=#params class=internal>customize your room by using
+            URL parameters</a> in the same way as embedding in a website.
         </div>
       </div>
     </div>

@@ -6,11 +6,18 @@ body {
 }
 
 h1 {
-  font-family: "Whereby Text";
+  font-family: "Whereby Condensed", Georgia, serif;
+  font-size: 80px;
+  font-weight: normal;
+  line-height: 90px;
 }
 
 h2 {
-  margin-top: 48px;
+  font-family: "Whereby Text", Georgia, serif;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 46px;
+  margin-top: 64px;
 }
 
 .block {
@@ -25,6 +32,10 @@ h2 {
 .content {
   display: flex;
   padding-bottom: 96px;
+}
+
+.internal {
+  color: black;
 }
 
 nav {
@@ -48,11 +59,20 @@ nav a:target {
   background-color: rgb(11, 84, 67);
 }
 
+th { text-align: left; }
+
 code {
   border: 1px solid #d4d4d4;
-  padding: 8px;
+  padding: 2px 4px;
   border-radius: 4px;
   font-weight: bold;
   color: #444;
   background-color: #f7f7f7;
+}
+code.block {
+  padding: 8px 16px;
+}
+
+code em {
+  color: #a33;
 }
