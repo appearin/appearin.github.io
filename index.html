@@ -1,70 +1,17 @@
 <html>
   <head>
+    <meta charset=utf-8>
     <title>Whereby - Developer documentation</title>
     <link rel="stylesheet" href="styles.css" />
-    <link data-react-helmet="true" href="https://d2qulvgqu65efe.cloudfront.net/favicon.png" rel="icon" type="image/png" sizes="60x60">
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Italic.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Medium.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-MediumItalic.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBold.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBoldItalic.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleDisplayCondensed-Regular.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleText-Regular.woff2"
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      data-react-helmet="true"
-      href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/favicon.png" rel="icon" type="image/png" sizes="60x60">
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Italic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-Medium.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-MediumItalic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBold.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/inter/Inter-SemiBoldItalic.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleDisplayCondensed-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-roslindale/WherebyRoslindaleText-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="wrapper">
@@ -127,7 +74,7 @@
             <li>?screenshare=&lt;on&gt; - Enable screenshare in embedded meeting</li>
           </ul>
 
-          <h3>Embedding in native apps</h3>
+          <h3 id=native>Embedding in native apps</h3>
           <h4>Android</h4>
           <p>
             Embedding in an Android app requires use of the <a href="https://developer.android.com/reference/android/webkit/WebView">WebView</a> class.
@@ -144,7 +91,7 @@
             <li>Redirect to mobile Safari</li>
             <li>Use SFSafariViewControlleri</li>
           </ul>
-          <h3>Embedding in a website</h3>
+          <h3 id=website>Embedding in a website</h3>
           <p>
             Whereby meetings are embedded into other web services by use of an
             iframe. The source of the iframe needs to be a Whereby meeting url,
