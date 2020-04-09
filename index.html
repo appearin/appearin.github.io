@@ -77,7 +77,13 @@
           <h3 id=native>Embedding in native apps</h3>
           <h4>Android</h4>
           <p>
-            Embedding in an Android app requires use of the <a href="https://developer.android.com/reference/android/webkit/WebView">WebView</a> class.
+            Embedding in an Android app requires use of the <a
+              href="https://developer.android.com/reference/android/webkit/WebView">WebView</a>
+            class.
+          </p>
+          <p>
+            You need to use the <code>?skipMediaPermissionPrompt</code> query
+            parameter on the embedded URL to make it get the stream.
           </p>
 
           <h4>iOS</h4>
