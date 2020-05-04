@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "heresy": "./heresy.js"
+  }
+}

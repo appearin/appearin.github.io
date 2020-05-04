@@ -1,0 +1,24 @@
+{
+  "name": "whereby-embed",
+  "license": "MPL",
+  "scripts": {
+    "prepare": "snowpack",
+    "start": "es-dev-server --http2 --watch --port 8080 --compatibility none --ssl-key ../../local-stack/certs/bundle.pem --ssl-cert ../../local-stack/certs/bundle.pem"
+  },
+  "snowpack": {
+    "installOptions": {
+      "dest": "web_modules"
+    },
+    "dedupe": [
+      "heresy"
+    ]
+  },
+  "dependencies": {
+    "heresy": "^0.26.1"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.45.2",
+    "prettier": "^1.19.1",
+    "snowpack": "^1.6.0"
+  }
+}
