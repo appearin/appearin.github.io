@@ -61,7 +61,7 @@ nav a:target {
 
 th { text-align: left; }
 
-code {
+code, .code {
   border: 1px solid #d4d4d4;
   padding: 2px 4px;
   border-radius: 4px;

@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "es-dev-server --http2 --watch --port 8080 --compatibility none --ssl-key ../local-stack/certs/bundle.pem --ssl-cert ../local-stack/certs/bundle.pem"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.45.2"
+  }
+}

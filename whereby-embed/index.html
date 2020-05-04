@@ -1,23 +1,29 @@
 <!doctype html>
 <meta charset=utf-8>
 <title>&lt;whereby-embed&gt; element</title>
-<style>
-body { background: aliceblue; }
-</style>
+<link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css" rel="stylesheet" type="text/css">
+<link href="../styles.css" rel="stylesheet" type="text/css">
+<script>
+  if (!location.pathname.endsWith("/")) location.href = location.href + "/";
+</script>
 
-<p>Work in progress. You'll want to read the <a href="../">regular docs for now</a>.
+<body class="wrapper">
+<h1>The &lt;whereby-embed&gt; element</h1>
+<p>This is currently experimental.
 
-<p>Later you can use it a bit like this:
+<p>You can try it out like this:
 
-<blockquote>
-  <pre>
-&lt;script type=module src="link-to-whereby-embed.js"&gt;&lt;/script&gt;
-&lt;whereby-embed embed subdomain=yourcompany room="/your_room"&gt;&lt;/whereby-embed&gt;
-  </pre>
-</blockquote>
+<code class=block>
+  &lt;script type=module
+  src="https://whereby.dev/embed/whereby-embed.js"&gt;&lt;/script&gt;<br>
+  &lt;style&gt;whereby-embed { <em>height: 700px;</em> }&lt;/style&gt;<br>
+  &lt;whereby-embed embed subdomain=<em>yourcompany</em> room="<em>/your_room</em>"&gt;&lt;/whereby-embed&gt;
+</code>
 
-<p>It can look like this:
+<p>It will then look something like this:</p>
 
-<style> whereby-embed { height: 700px; } </style>
 <script type=module src="./whereby-embed.js"></script>
+<style>whereby-embed { height: 700px; }</style>
 <whereby-embed embed subdomain=businessdemo displayName="Embed demo" room="/demo"></whereby-embed>
+
+</body>
