@@ -1,6 +1,12 @@
 import { define } from "./web_modules/heresy.js";
 
 define("WherebyEmbed", {
+  onconnected() {
+    window.addEventListener("message", this);
+  },
+  ondisconnected() {
+    window.removeEventListener("message", this);
+  },
   observedAttributes: ["room", "background", "embed", "subdomain", "displayName"],
   style(self) {
     return `
@@ -13,6 +19,12 @@ define("WherebyEmbed", {
       width: 100%;
     }
     `;
+  },
+  onmessage({ origin, data }) {
+    const url = new URL(this.room, `https://${this.subdomain}.whereby.com`);
+    if (origin !== url.origin) return;
+    const { type, payload: detail } = data;
+    this.dispatchEvent(new CustomEvent(type, { detail }));
   },
   render() {
     const { 

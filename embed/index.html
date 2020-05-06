@@ -5,8 +5,21 @@
 <link href="../styles.css" rel="stylesheet" type="text/css">
 <script>
   if (!location.pathname.endsWith("/")) location.href = location.href + "/";
-  window.addEventListener("message", (e) => console.log(e), false);
 </script>
+<style>
+output {
+  background-color: #444;
+  border-radius: 4px;
+  border: 1px solid #d4d4d4;
+  color: #f7f7f7;
+  display: block;
+  font-family: monospace;
+  height: 10em;
+  max-width: 500px;
+  overflow: auto;
+  padding: 8px 16px;
+}
+</style>
 
 <body class="wrapper">
 <h1>The &lt;whereby-embed&gt; element</h1>
@@ -26,5 +39,53 @@
 <script type=module src="./whereby-embed.js"></script>
 <style>whereby-embed { height: 700px; }</style>
 <whereby-embed embed subdomain=businessdemo displayName="Embed demo" room="/check-check"></whereby-embed>
+
+<h2>Listening to events</h2>
+
+<p>You can listen for events on the <code>&lt;whereby-embed&gt;</code> element. The following events
+are supported:
+
+<table>
+  <tr><th>Event type <th>Description <th>Properties (from "detail")
+  <tr>
+    <td><code>ready</code>
+    <td>Basic dependencies has loaded
+    <td>&ndash;
+  <tr>
+    <td><code>participantupdate</code>
+    <td>A new participant join/leave
+    <td>{ count: Number }
+  <tr>
+    <td><code>leave</code>
+    <td>The local user leaves
+    <td>&ndash;
+</table>
+
+<p>You can use standard Javascript to listen to the events. Here's a small demo:
+<pre class=code>
+  const elm = document.querySelector("whereby-embed");
+  const output = document.querySelector("output");
+  const events = [];
+  function logEvent(event) {
+    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail})}\n`;
+  }
+  elm.addEventListener("ready", logEvent)
+  elm.addEventListener("participantupdate", logEvent)
+  elm.addEventListener("leave", logEvent)
+</pre>
+
+<p>Output:<br> <output style="white-space: pre"></output>
+
+<script type=module>
+  const elm = document.querySelector("whereby-embed");
+  const output = document.querySelector("output");
+  const events = [];
+  function logEvent(event) {
+    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail})}\n`;
+  }
+  elm.addEventListener("ready", logEvent)
+  elm.addEventListener("participantupdate", logEvent)
+  elm.addEventListener("leave", logEvent)
+</script>
 
 </body>

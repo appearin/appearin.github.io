@@ -59,7 +59,10 @@ nav a:target {
   background-color: rgb(11, 84, 67);
 }
 
-th { text-align: left; }
+td, th {
+  padding: 0 10px 0 0;
+  text-align: left;
+}
 
 code, .code {
   border: 1px solid #d4d4d4;
