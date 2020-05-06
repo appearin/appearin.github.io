@@ -1,0 +1,29 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Basic &lt;iframe&gt; example</title>
+<link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css" rel="stylesheet" type="text/css">
+<link href="../styles.css" rel="stylesheet" type="text/css">
+<script>
+  if (!location.pathname.endsWith("/")) location.href = location.href + "/";
+</script>
+
+<body class="wrapper">
+<h1>basic &lt;iframe&gt; example</h1>
+
+<p>This shows simply how to use iframe to embed Whereby.
+
+<code class=block>
+  &lt;iframe 
+  style="width: 100%; height: 600px"<br>
+  src="https://<em>example</em>.whereby.com/<em>room</em>?embed&amp;iframeSource=<em>example</em>&amp;displayName=Some%20name"<br>
+  allow="camera; microphone; fullscreen; speaker; display-capture"&gt;&lt;/iframe&gt;
+</code>
+
+<p>It will then look something like this (having replaced <em>"example"</em> with your own values):</p>
+
+<iframe 
+  style="width: 100%; height: 600px"
+  src="https://sub-ip-10-13-37-11.rfc1918.disappear.at:4443/room?embed&amp;iframeSource=businessdemo&amp;displayName=Some%20name"
+  allow="camera; microphone; fullscreen; speaker; display-capture"></iframe>
+
+</body>
