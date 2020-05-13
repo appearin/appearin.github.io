@@ -42,19 +42,33 @@
       }
     },
     "schemas": {
+      "Fields": {
+        "type": "array",
+        "items": {
+          "type": "string,",
+          "enum": [
+            "hostRoomUrl"
+          ]
+        },
+        "description": "Additional fields that should be populated.\n- `hostRoomUrl` - Include hostRoomUrl field in the meeting response.\n"
+      },
       "Meeting": {
         "type": "object",
+        "required": [
+          "meetingId",
+          "roomUrl",
+          "startDate",
+          "endDate"
+        ],
         "properties": {
           "meetingId": {
             "type": "string",
-            "description": "The ID of the meeting.",
-            "example": "1"
+            "description": "The ID of the meeting."
           },
           "roomUrl": {
             "type": "string",
             "format": "uri",
-            "description": "The URL to room where the meeting will be hosted.",
-            "example": "https://example.com/test-room-9378ce50-e0c4-4661-a2fb-f75ed4e168b0"
+            "description": "The URL to room where the meeting will be hosted."
           },
           "startDate": {
             "type": "string",
@@ -65,7 +79,18 @@
             "type": "string",
             "format": "date-time",
             "description": "When the meeting ends."
+          },
+          "hostRoomUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL to room where the meeting will be hosted which will also make the user the host of the\nmeeting. A host will get additional privileges like locking and recording, and you should therefore\nbe careful with whom you share this URL. The user will only become a host if the meeting is on-going (some additional\nslack is added to allow a host joining the meeting ahead of time or if the meeting goes over time).\nThis field is optional and will only provided if requested through fields parameter.\n"
           }
+        },
+        "example": {
+          "meetingId": "1",
+          "startDate": "2020-05-12T16:42:49Z",
+          "endDate": "2020-05-12T17:42:49Z",
+          "roomUrl": "http://example.com"
         }
       }
     }
@@ -112,6 +137,9 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "When the meeting ends. This has to be the same or after the startDate."
+                  },
+                  "fields": {
+                    "$ref": "#/components/schemas/Fields"
                   }
                 }
               }
@@ -119,7 +147,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "The resource was created successfully.",
             "content": {
               "application/json": {
@@ -159,6 +187,15 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/meetingId"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "$ref": "#/components/schemas/Fields"
+            },
+            "explode": false,
+            "style": "form"
           }
         ],
         "responses": {
