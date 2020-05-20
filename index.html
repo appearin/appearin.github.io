@@ -90,6 +90,19 @@
             clients (browser/app). If you want to do that, then you'll need to create your own
             endpoint on your own api server to do that.
           </p>
+          <p>
+            A quick example on how to create a one-time room for a meeting:
+          </p>
+          <code class="block">
+            curl -X POST \<br>
+            -d '{"startDate": "<em>2030-01-01T02:00:00Z</em>", "endDate": "<em>2030-01-01T03:00:00Z</em>", "fields": ["hostRoomUrl"]}' \<br>
+            -H "Content-Type: application/json" \<br>
+            -H "Authorization: Bearer <em>YOUR_API_KEY</em>" \<br>
+            https://api.whereby.dev/v1/meetings
+          </code>
+
+          <a href="http-api/#/paths/~1meetings" style="background: #45a; display: block; padding:
+            20px 40px; margin: 20px 40px 0; border-radius: 4px; text-align: center; font-size: 1.4em; color: white;">Go to HTTP api reference docs</a>
 
           <h2 id="embedding_meetings">2. Embedding meetings</h2>
           <p>
