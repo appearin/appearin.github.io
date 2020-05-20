@@ -1,5 +1,18 @@
 import { define } from "./web_modules/heresy.js";
 
+const boolAttrs = [
+  "audio",
+  "background",
+  "chat",
+  "embed",
+  "emptyRoomInvitation",
+  "help",
+  "leaveButton",
+  "precallReview",
+  "recording",
+  "video"
+];
+
 define("WherebyEmbed", {
   onconnected() {
     window.addEventListener("message", this);
@@ -7,7 +20,13 @@ define("WherebyEmbed", {
   ondisconnected() {
     window.removeEventListener("message", this);
   },
-  observedAttributes: ["room", "background", "embed", "subdomain", "displayName"],
+  observedAttributes: [
+    "displayName",
+    "minimal",
+    "room",
+    "subdomain",
+    ...boolAttrs
+  ],
   style(self) {
     return `
     ${self} {
@@ -27,32 +46,21 @@ define("WherebyEmbed", {
     this.dispatchEvent(new CustomEvent(type, { detail }));
   },
   render() {
-    const { 
-      background,
-      chat,
-      displayName,
-      embed,
-      emptyRoomInvitation,
-      help,
-      precallReview,
-      recording,
-      room,
-      subdomain,
-    } = this;
+    const { displayName, minimal, room, subdomain } = this;
     if (!subdomain) return this.html`Whereby: Missing subdomain attr.`;
     if (!room) return this.html`Whereby: Missing room attr.`;
     const url = new URL(room, `https://${subdomain}.whereby.com`);
     url.search = new URLSearchParams({
       iframeSource: subdomain,
       ...(displayName && { displayName }),
-      ...(background !== undefined && { background }),
-      ...(chat !== undefined && { chat }),
-      ...(embed !== undefined && { embed }),
-      ...(emptyRoomInvitation !== undefined && { emptyRoomInvitation }),
-      ...(help !== undefined && { help }),
-      ...(precallReview !== undefined && { precallReview }),
-      ...(recording !== undefined && { recording }),
+      // the original ?embed name was confusing, so we give minimal
+      ...(minimal != null && { embed: minimal }),
       roomIntegrations: "off",
+      ...boolAttrs.reduce(
+        // add to URL if set in any way
+        (o, v) => (this[v] != null ? { ...o, [v]: this[v] } : o),
+        {}
+      )
     });
     this.html`
       <iframe
