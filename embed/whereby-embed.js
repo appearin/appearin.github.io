@@ -26,7 +26,11 @@ define("WherebyEmbed", {
     "room",
     "subdomain",
     ...boolAttrs
-  ],
+  ].map(a => a.toLowerCase()),
+  onattributechanged({ attributeName, oldValue }) {
+    if (["room", "subdomain"].includes(attributeName) && oldValue == null) return;
+    this.render();
+  },
   style(self) {
     return `
     ${self} {
@@ -58,7 +62,7 @@ define("WherebyEmbed", {
       roomIntegrations: "off",
       ...boolAttrs.reduce(
         // add to URL if set in any way
-        (o, v) => (this[v] != null ? { ...o, [v]: this[v] } : o),
+        (o, v) => (this[v.toLowerCase()] != null ? { ...o, [v]: this[v.toLowerCase()] } : o),
         {}
       )
     });
