@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>&lt;whereby-embed&gt; element</title>
+<link href="https://d2qulvgqu65efe.cloudfront.net/fonts/whereby-fonts.css" rel="stylesheet" type="text/css">
+<link href="../../styles.css" rel="stylesheet" type="text/css">
+<script>
+  if (!location.pathname.endsWith("/")) location.href = location.href + "/";
+</script>
+<style>
+output {
+  background-color: #444;
+  border-radius: 4px;
+  border: 1px solid #d4d4d4;
+  color: #f7f7f7;
+  display: block;
+  font-family: monospace;
+  height: 10em;
+  max-width: 500px;
+  overflow: auto;
+  padding: 8px 16px;
+}
+</style>
+
+<body class="wrapper">
+<h1>&lt;whereby-embed&gt; tester</h1>
+
+<script type=module src="./tester.js"></script>
+<whereby-tester></whereby-tester>
+
+<p>Events output:<br> <output style="white-space: pre"></output>
+
+<script type=module>
+  const elm = document.querySelector("whereby-embed");
+  const output = document.querySelector("output");
+  const events = [];
+  function logEvent(event) {
+    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail})}\n`;
+  }
+  elm.addEventListener("ready", logEvent)
+  elm.addEventListener("participantupdate", logEvent)
+  elm.addEventListener("leave", logEvent)
+</script>
+
+</body>
