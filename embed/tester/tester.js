@@ -5,12 +5,13 @@ const boolAttrs = [
   "audio",
   "background",
   "chat",
-  "minimal",
   "emptyRoomInvitation",
   "help",
   "leaveButton",
+  "minimal",
   "precallReview",
   "recording",
+  "screenshare",
   "video"
 ];
 

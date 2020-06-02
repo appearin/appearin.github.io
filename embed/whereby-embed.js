@@ -10,6 +10,7 @@ const boolAttrs = [
   "leaveButton",
   "precallReview",
   "recording",
+  "screenshare",
   "video"
 ];
 
