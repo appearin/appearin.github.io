@@ -219,8 +219,11 @@
               >WebView</a> class.
           </p>
           <p>
-            You need to use the <code>?skipMediaPermissionPrompt</code> query
-            parameter on the embedded URL to make it get the stream.
+            You need to
+            <a href="https://stackoverflow.com/questions/22376202/camera-not-opening-in-webview/31238542#31238542">
+              override “WebChromeClient.onPermissionRequest”</a> and use the
+            <code>?skipMediaPermissionPrompt</code> query parameter on the embedded URL to make
+            Whereby be able to get the camera.
           </p>
 
           <h4>iOS</h4>
@@ -238,6 +241,10 @@
           Whereby-meeting, it would be possible to use
           <em>SFSafariViewController</em> to embed a website where you show
           your UI and again use an iframe to embed Whereby.
+
+          <p>If you are using Cordova, you can
+          <a href=https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller>
+            use a Cordova plugin for SafariViewController</a>.
 
           <h4>Customizing the room</h4>
           <p>You can <a href=#params class=internal>customize your room by using
