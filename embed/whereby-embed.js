@@ -51,7 +51,7 @@ define("WherebyEmbed", {
     this.dispatchEvent(new CustomEvent(type, { detail }));
   },
   render() {
-    const { displayName, minimal, room, subdomain } = this;
+    const { displayname: displayName, minimal, room, subdomain } = this;
     if (!subdomain) return this.html`Whereby: Missing subdomain attr.`;
     if (!room) return this.html`Whereby: Missing room attr.`;
     const url = new URL(room, `https://${subdomain}.whereby.com`);
