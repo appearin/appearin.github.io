@@ -26,15 +26,15 @@
           <h1 style="margin-bottom:48px">Whereby developer guide</h1>
           <p>
             Want to learn more about embedding your one-time Whereby meeting
-            rooms into your website or application? With our new Meetings API
+            rooms into your website or application? With our Meetings API
             you can customize your user experience to best meet your brand and
             customer needs.
           </p>
           <p>
             Whether you’re hosting large group meetings or one-on-ones, the
             options to customize your meeting rooms are straightforward to
-            integrate into your product, and adjustable at the touch of a button
-            by using URL parameters.
+            integrate into your product, and individually adjustable by using
+            URL parameters.
           </p>
           <h2 id="getting_started">Getting started</h2>
           <p>
@@ -128,25 +128,26 @@
             link). You can create that manually (easy for testing), or use the
             HTTP API to create the required roomUrl.
           </p>
-
           <p>
             Either approach allows for customization of the embedded experience
-            by adding query parameters to the room URL.
+            by adding <a href=#params class=internal
+              >query parameters to the room URL</a>.
           </p>
           <p>
-            When you share your meeting room link, by including ?embed on the
-            end of your URL you’ll see a host of default UI adjustments come
-            into play. Namely, ?embed strips away the Whereby look and feel so
-            that your brand shines. We recommend doing this any time you’re
-            embedding your video meeting so that your participants experience
-            your meeting as a part of your brand.
+            By adding <code>?embed</code> to your meeting room link, you will
+            get several UI adjustments. Namely, <code>?embed</code> strips away
+            some of the Whereby look and feel so that your brand shines. We
+            recommend doing this any time you’re embedding your video meeting so
+            that your participants experience your meeting as a part of your
+            brand.
           </p>
           <p>
-            Along with the Whereby branding and the URL bar, this also removes a
-            number of the usual features, such as the name of the room, the
-            number of participants, the recording button, the screenshare
-            function and login button. Should you wish to add features back into
-            your meeting room, you can do so by stacking URL parameters.
+            Along with the obvious Whereby branding and the top bar, this also
+            removes several features, such as the name of the room, the number
+            of participants, the recording button, the screenshare function and
+            login button. Should you wish to add features back into your meeting
+            room, you can do so by <a href=#params-stacking class=internal
+              >stacking URL parameters</a>.
           </p>
 
           <h3 id="website">Embedding in a website</h3>
@@ -227,9 +228,9 @@
 
           <h3 id=params>URL parameters</h3>
           <p>
-            Our API gives you the ultimate control to provide a customized
-            experience for your events and meetings. You might even want to put
-            in place different call parameters depending on who you’re meeting.
+            Our API gives you the control to provide a customized experience for
+            your events and meetings. You might even want to put in place
+            different call parameters depending on who you’re meeting.
           </p>
           <p>
             Plus, creating different parameters for different users within the
@@ -243,19 +244,23 @@
             students joining a classroom call. You can provide a link with that
             parameter included, and another without it included for your teacher
             or presenter. As long as your meeting room URL is the same, your
-            customized experience will be ready to go for each user.
+            users will enter the same room but with a customized experience for
+            each user.
           </p>
 
-          <h4>Stacking Parameters</h4>
+          <h4 id=params-stacking>Stacking Parameters</h4>
           <p>
-            It is easy to choose more than one parameter at a time for each
-            meeting room or participant. In fact, you can choose as many you
+            It is easy to use more than one parameter at a time for each
+            meeting room or participant. In fact, you can use as many you
             want.
           </p>
           <p>
-            When you add embed to your meeting room URL, simply add the
-            ampersand sign to stack additional parameters. Add an “&amp;” for
-            each parameter you want to add.
+            When there already is a parameter added to your meeting room URL,
+            simply replace the question mark with the ampersand sign (&amp;) to
+            stack additional parameters. Say you want to use <code>?embed</code>
+            and <code>?screenshare</code> in order to specifically turn
+            screenshare back on, your end of the URL should look like this:
+            <code>?embed&amp;screenshare</code>.
           </p>
 
           <table>
@@ -317,8 +322,8 @@
             Like all of our parameters that you might want to tailor to your
             meeting room, the audio off parameter is simply typed onto the end
             of your meeting room URL. If you’re stacking it with the embed
-            parameter, you would type ?embed&?audio=off onto the end of your
-            URL.
+            parameter, you would type <code>?embed&amp;audio=off</code> onto the
+            end of your URL.
           </p>
           <p>
             When a participant enters a meeting through a link with that URL
@@ -387,11 +392,11 @@
             this still available, though.
           </p>
           <p>
-            As ever, our chat function is safe and secure, and we don’t store
+            Our chat function is safe and secure, and we don’t store
             the text from the chat after the meeting is over.
           </p>
           <p>
-            If you do want to add it back into your embedded meeting rooms,
+            If you want to add it back into your embedded meeting rooms,
             simply add the chat on parameter to your URL, stacked with the embed
             parameter.
           </p>
@@ -410,7 +415,7 @@
             If you do prefer to put the leave button back into your meeting
             room, you can enable it by using the leave on parameter. When your
             call participants do leave a call using this button, they’ll see a
-            pop-up that says they’ve left.
+            screen that says they’ve left.
           </p>
           <h4>Screenshare</h4>
           <p>
@@ -421,7 +426,9 @@
           </p>
           <p>
             Once this button is enabled again, your call participants can share
-            their full screen, a tab or a window.
+            their full screen, a tab or a window. This will only work if the
+            browser they’re using supports screenshare, something no mobile
+            browsers supports yet.
           </p>
           <h4>Display Name</h4>
           <p>
@@ -450,11 +457,11 @@
           </p>
           <p>
             Guests to your meeting room will not see this; only the host is
-            going to be able to see the record button when the recording on
-            parameter is used. You can make someone a host through a host URL.
+            able to see the record button when the recording on parameter is
+            used. You can make someone a host through a host URL.
           </p>
           <p>
-            Like all of our features, our recording function is extremely secure
+            Like all of our features, our recording function is secure
             because the recordings are stored locally on your machine.
           </p>
 
@@ -506,7 +513,7 @@
             only by a few minutes, your call is not timed out.
           </p>
           <p>
-            Instead, we delete meeting rooms no sooner than 48 hours after your
+            Instead, we delete meeting rooms no sooner than 24 hours after your
             room end date. In fact, meetings are deleted in bulk at 5am EST once
             your room is eligible for deletion, which is 24 hours after the end
             date. So, if your meeting is set to end at 11am on Tuesday, at 11am
@@ -517,7 +524,8 @@
             If you would prefer than your meeting room is deleted at the time of
             your end date, because you do not want people to be able to re-enter
             your meeting room that is also a possibility. You would simply
-            delete the room by going to delete meeting in your settings.
+            delete the room yourself by <a href="#creating_meetings" class="internal"
+              >using the HTTP API</a>.
           </p>
         </div>
       </div>
