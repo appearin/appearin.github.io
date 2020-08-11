@@ -111,6 +111,10 @@
                   "endDate"
                 ],
                 "properties": {
+                  "isLocked": {
+                    "type": "boolean",
+                    "description": "The initial lock state of the room. If true, only hosts will be able to let in other participants\nand change lock state.\n"
+                  },
                   "roomNamePrefix": {
                     "type": "string",
                     "maxLength": 40,
