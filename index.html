@@ -271,6 +271,7 @@
             <tr><th><code>?video=off</code>                             <td>Enter meeting with video off</tr>
             <tr><th><code>?background=off</code>                        <td>Render without background to let embedding app render its own</tr>
             <tr><th><code>?chat=&lt;on|off&gt;</code>                   <td>Enable/disable chat</tr>
+            <tr><th><code>?people=off</code>                            <td>Disable participant list</tr>
             <tr><th><code>?leaveButton=&lt;on|off&gt;</code>            <td>Enable/disable leave button</tr>
             <tr><th><code>?recording=&lt;on|off&gt;</code>              <td>Enable/disable recording (only for host)</tr>
             <tr><th><code>?screenshare=&lt;on|off&gt;</code>            <td>Enable/disable screenshare</tr>
@@ -401,6 +402,8 @@
             simply add the chat on parameter to your URL, stacked with the embed
             parameter.
           </p>
+          <h4>People</h4>
+          <p>The participant list sidebar is enabled in the default embed scenario but the button to toggle it is only visible to the meeting host. The participant list may be of use as it provides access to tools to bulk manage participants. One reason you may want to disable the participant list completely is if you enable the chat function and don't want the participant list to show up as a second tab in the sidebar.</p>
           <h4>Leave Button</h4>
           <p>
             Similar to the chat button, the leave button is automatically

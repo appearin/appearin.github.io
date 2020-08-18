@@ -4,6 +4,7 @@ const boolAttrs = [
   "audio",
   "background",
   "chat",
+  "people",
   "embed",
   "emptyRoomInvitation",
   "help",

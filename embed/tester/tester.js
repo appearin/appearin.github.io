@@ -9,6 +9,7 @@ const boolAttrs = [
   "help",
   "leaveButton",
   "minimal",
+  "people",
   "precallReview",
   "recording",
   "screenshare",
