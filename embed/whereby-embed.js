@@ -52,11 +52,14 @@ define("WherebyEmbed", {
     this.dispatchEvent(new CustomEvent(type, { detail }));
   },
   render() {
-    const { displayname: displayName, minimal, room, subdomain } = this;
-    if (!subdomain) return this.html`Whereby: Missing subdomain attr.`;
+    const { displayname: displayName, minimal, room } = this;
     if (!room) return this.html`Whereby: Missing room attr.`;
+    // Get subdomain from room URL, or use it specified
+    let subdomain = /https:\/\/([^.]+)\.whereby.com\/.+/.exec(room)?.[1] || this.subdomain;
+    if (!subdomain) return this.html`Whereby: Missing subdomain attr.`;
     const url = new URL(room, `https://${subdomain}.whereby.com`);
     url.search = new URLSearchParams({
+      ...(url.searchParams.has("roomKey") && { roomKey: url.searchParams.get("roomKey") }),
       iframeSource: subdomain,
       ...(displayName && { displayName }),
       // the original ?embed name was confusing, so we give minimal

@@ -40,9 +40,23 @@ output {
 <style>whereby-embed { height: 700px; }</style>
 <whereby-embed embed subdomain=businessdemo displayName="Embed demo" room="/check-check"></whereby-embed>
 
+<p>You can also use a shortcut of giving the room attribute your full
+  URL which is convenient when dealing with the API. This is also
+  required when you are using the <code>hostRoomUrl</code>:
+<code class=block>
+  &lt;whereby-embed room="<em>https://yourcompany.whereby.com/your_room?roomKey=3fe345a</em>"&gt;&lt;/whereby-embed&gt;
+</code>
+
 <h2 id=params>Attributes you can use</h2>
 <table style=width:100%>
   <thead><tr><th>Attribute <th>Value <th>Description <th>Usage </tr></thead>
+  <tr>
+    <th><code>room</code>
+    <td>The room you want to embed
+    <td>This field is required
+    <td><code>&lt;whereby-embed room="/your_room" /&gt;</code>
+  </tr>
+
   <tr>
     <th><code>minimal</code>
       <td>nothing (on) or <code>"off"</code>
