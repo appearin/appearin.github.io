@@ -41,4 +41,11 @@ output {
   elm.addEventListener("leave", logEvent)
 </script>
 
+<script type=module>
+  const elm = document.querySelector("whereby-embed");
+  const url = new URL(location.href);
+  const room = url.searchParams.get("room");
+  if (room) elm.room = room;
+</script>
+
 </body>
