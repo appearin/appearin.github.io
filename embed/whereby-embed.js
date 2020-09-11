@@ -64,7 +64,6 @@ define("WherebyEmbed", {
       ...(displayName && { displayName }),
       // the original ?embed name was confusing, so we give minimal
       ...(minimal != null && { embed: minimal }),
-      roomIntegrations: "off",
       ...boolAttrs.reduce(
         // add to URL if set in any way
         (o, v) => (this[v.toLowerCase()] != null ? { ...o, [v]: this[v.toLowerCase()] } : o),
