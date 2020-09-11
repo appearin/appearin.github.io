@@ -58,8 +58,7 @@ define("WherebyEmbed", {
     let subdomain = /https:\/\/([^.]+)\.whereby.com\/.+/.exec(room)?.[1] || this.subdomain;
     if (!subdomain) return this.html`Whereby: Missing subdomain attr.`;
     const url = new URL(room, `https://${subdomain}.whereby.com`);
-    url.search = new URLSearchParams({
-      ...(url.searchParams.has("roomKey") && { roomKey: url.searchParams.get("roomKey") }),
+    Object.entries({
       iframeSource: subdomain,
       ...(displayName && { displayName }),
       // the original ?embed name was confusing, so we give minimal
@@ -69,6 +68,10 @@ define("WherebyEmbed", {
         (o, v) => (this[v.toLowerCase()] != null ? { ...o, [v]: this[v.toLowerCase()] } : o),
         {}
       )
+    }).forEach(([k, v]) => {
+      if (!url.searchParams.has(k)) {
+        url.searchParams.set(k, v);
+      }
     });
     this.html`
       <iframe
