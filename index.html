@@ -152,12 +152,9 @@
 
           <h3 id="website">Embedding in a website</h3>
           <p>
-            For initial development install an extension like
-            <a
-              href="https://chrome.google.com/webstore/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden"
-              >disable CSP (Chrome)</a>.
-            When you're ready for production or staging, we'll need to
-            whitelist the domains.
+            For initial development, since we don't allow localhost to be whitelisted, 
+            we suggest you add your domain to <code><em>/etc/hosts</em></code>. That way you can just use the 
+            actual domain instead of “localhost.” 
           </p>
 
           <p>Your development environment will still need to use https.</p>
