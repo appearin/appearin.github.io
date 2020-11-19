@@ -87,6 +87,15 @@
             working. A <strong>401</strong> response means the provided key is
             incorrect.
           </p>
+          <p>
+            This last sentence is worth repeating: you <em>will</em> get
+            an error when trying the above command, since you don't own
+            meeting id 1. This error means that it is
+            <strong>working</strong> if it says <code>"error":"Could not
+              find meeting"</code> (which is a 404 error). You can then
+            try creating a meeting by using the command further down on
+            this page.
+          </p>
           <h3>Using the meetings API</h3>
           <p>
             Meetings are created by sending sending an HTTP request to our
