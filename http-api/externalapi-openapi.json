@@ -45,7 +45,7 @@
       "Fields": {
         "type": "array",
         "items": {
-          "type": "string,",
+          "type": "string",
           "enum": [
             "hostRoomUrl"
           ]
@@ -121,6 +121,16 @@
                     "pattern": "[/][a-z0-9]{0,39}",
                     "example": "/example-prefix",
                     "description": "This will be used as the prefix for the room name. Note that the room name needs to start with /\nif it is provided and should be lower-case.\n"
+                  },
+                  "roomNamePattern": {
+                    "type": "string",
+                    "default": "uuid",
+                    "enum": [
+                      "uuid",
+                      "human-short"
+                    ],
+                    "example": "uuid",
+                    "description": "The format of the randomly generated room name.\n`uuid` is the default room name pattern and follows the usual 8-4-4-4-12 pattern.\n`human-short` generates a shorter string made up of six distinguishable characters.\n"
                   },
                   "roomMode": {
                     "type": "string",
