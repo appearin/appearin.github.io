@@ -55,7 +55,8 @@ define("WherebyEmbed", {
     const { displayname: displayName, minimal, room } = this;
     if (!room) return this.html`Whereby: Missing room attr.`;
     // Get subdomain from room URL, or use it specified
-    let subdomain = /https:\/\/([^.]+)\.whereby.com\/.+/.exec(room)?.[1] || this.subdomain;
+    let m = /https:\/\/([^.]+)\.whereby.com\/.+/.exec(room);
+    const subdomain = (m && m[1]) || this.subdomain;
     if (!subdomain) return this.html`Whereby: Missing subdomain attr.`;
     const url = new URL(room, `https://${subdomain}.whereby.com`);
     Object.entries({
