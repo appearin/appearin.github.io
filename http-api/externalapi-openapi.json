@@ -73,12 +73,12 @@
           "startDate": {
             "type": "string",
             "format": "date-time",
-            "description": "When the meeting starts."
+            "description": "When the meeting starts in UTC."
           },
           "endDate": {
             "type": "string",
             "format": "date-time",
-            "description": "When the meeting ends."
+            "description": "When the meeting ends in UTC."
           },
           "hostRoomUrl": {
             "type": "string",
@@ -145,12 +145,12 @@
                   "startDate": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "When the meeting starts. This has to be newer than the current date."
+                    "description": "When the meeting starts in UTC. This has to be newer than the current date."
                   },
                   "endDate": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "When the meeting ends. This has to be the same or after the startDate."
+                    "description": "When the meeting ends in UTC. This has to be the same or after the startDate."
                   },
                   "fields": {
                     "$ref": "#/components/schemas/Fields"
