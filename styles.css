@@ -29,36 +29,6 @@ h2 {
   margin: 0 auto;
 }
 
-.content {
-  display: flex;
-  padding-bottom: 96px;
-}
-
-.internal {
-  color: black;
-}
-
-nav {
-  flex-grow: 1;
-  margin-right: 24px;
-  margin-top: 96px;
-}
-
-nav a {
-  display: block;
-  white-space: nowrap;
-  color: inherit;
-  text-decoration: none;
-  padding: 10px 20px;
-  margin: 12px 0px;
-}
-
-nav a:target {
-  color: #fff;
-  border-radius: 8px;
-  background-color: rgb(11, 84, 67);
-}
-
 td, th {
   padding: 0 10px 0 0;
   text-align: left;
