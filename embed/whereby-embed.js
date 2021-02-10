@@ -13,6 +13,7 @@ const boolAttrs = [
   "screenshare",
   "video",
   "floatSelf",
+  "recording",
 ];
 
 define("WherebyEmbed", {
