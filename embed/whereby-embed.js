@@ -10,9 +10,9 @@ const boolAttrs = [
   "help",
   "leaveButton",
   "precallReview",
-  "recording",
   "screenshare",
-  "video"
+  "video",
+  "floatSelf",
 ];
 
 define("WherebyEmbed", {
