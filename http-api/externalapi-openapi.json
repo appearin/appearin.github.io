@@ -83,7 +83,7 @@
           "hostRoomUrl": {
             "type": "string",
             "format": "uri",
-            "description": "The URL to room where the meeting will be hosted which will also make the user the host of the\nmeeting. A host will get additional privileges like locking and recording, and you should therefore\nbe careful with whom you share this URL. The user will only become a host if the meeting is on-going (some additional\nslack is added to allow a host joining the meeting ahead of time or if the meeting goes over time).\nThis field is optional and will only provided if requested through fields parameter.\n"
+            "description": "The URL to room where the meeting will be hosted which will also make the user the host of the\nmeeting. A host will get additional privileges like locking the room, and removing and muting participants, so you should\nbe careful with whom you share this URL. The user will only become a host if the meeting is on-going (some additional\nslack is added to allow a host joining the meeting ahead of time or if the meeting goes over time).\nThis field is optional and will only provided if requested through fields parameter.\n"
           }
         },
         "example": {
