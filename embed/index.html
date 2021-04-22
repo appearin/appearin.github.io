@@ -127,19 +127,27 @@ output {
 are supported:
 
 <table>
-  <tr><th>Event type <th>Description <th>Properties (from "detail")
+  <tr><th>Event type <th>Description <th>Properties (from "detail")<tr />
   <tr>
     <td><code>ready</code>
     <td>Basic dependencies has loaded
     <td>&ndash;
+  <tr />
+  <tr>
+    <td><code>knock</code>
+    <td>The local user knocks to get into the room
+    <td>&ndash;
+  <tr />
   <tr>
     <td><code>participantupdate</code>
     <td>A new participant join/leave
     <td>{ count: Number }
+  <tr />
   <tr>
     <td><code>leave</code>
     <td>The local user leaves
     <td>&ndash;
+  <tr />
 </table>
 
 <p>You can use standard Javascript to listen to the events. Here's a small demo:
