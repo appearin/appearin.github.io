@@ -130,7 +130,8 @@ are supported:
   <tr><th>Event type <th>Description <th>Properties (from "detail")</tr>
   <tr>
     <td><code>ready</code>
-    <td>Basic dependencies has loaded
+    <td>Basic dependencies have loaded and the room is ready
+    to be used
     <td>&ndash;
   </tr>
   <tr>
@@ -154,9 +155,9 @@ are supported:
 <pre class=code>
   const elm = document.querySelector("whereby-embed");
   const output = document.querySelector("output");
-  const events = [];
+
   function logEvent(event) {
-    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail})}\n`;
+    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail })}\n`;
   }
   elm.addEventListener("ready", logEvent)
   elm.addEventListener("participantupdate", logEvent)
@@ -168,9 +169,9 @@ are supported:
 <script type=module>
   const elm = document.querySelector("whereby-embed");
   const output = document.querySelector("output");
-  const events = [];
+
   function logEvent(event) {
-    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail})}\n`;
+    output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail })}\n`;
   }
   elm.addEventListener("ready", logEvent)
   elm.addEventListener("participantupdate", logEvent)
