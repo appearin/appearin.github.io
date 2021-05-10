@@ -49,77 +49,85 @@ output {
 
 <h2 id=params>Attributes you can use</h2>
 <table style=width:100%>
-  <thead><tr><th>Attribute <th>Value <th>Description <th>Usage </tr></thead>
+  <thead><tr><th>Attribute <th>Value <th>Description </tr></thead>
   <tr>
     <th><code>room</code>
-    <td>The room you want to embed
-    <td>This field is required
-    <td><code>&lt;whereby-embed room="/your_room" /&gt;</code>
+    <td>A room id
+    <td>The id of the room you want to embed (required)
   </tr>
-
   <tr>
     <th><code>minimal</code>
     <td>Nothing (on) or <code>"off"</code>
     <td>Apply minimal UI for embed scenarios
-    <td><code>&lt;whereby-embed minimal /&gt;</code>
   </tr>
   <tr>
     <th><code>displayName</code>
     <td>Any string
     <td>Set displayname of participant
-    <td><code>&lt;whereby-embed displayName="John Smith" /&gt;</code>
   </tr>
   <tr>
     <th><code>audio=off</code>
     <td><code>"off"</code>
     <td>Enter meeting with audio off
-    <td><code>&lt;whereby-embed audio=off /&gt;</code>
   </tr>
   <tr>
     <th><code>video=off</code>
     <td><code>"off"</code>
     <td>Enter meeting with video off
-    <td><code>&lt;whereby-embed video=off /&gt;</code>
   </tr>
   <tr>
     <th><code>background=off</code>
     <td><code>"off"</code>
     <td>Render without background to let embedding app render its own
-    <td><code>&lt;whereby-embed background=off /&gt;</code>
   </tr>
   <tr>
     <th><code>chat</code>
     <td>Nothing (on) or <code>"off"</code>
     <td>Enable/disable chat
-    <td><code>&lt;whereby-embed chat=off /&gt;</code> <code>&lt;whereby-embed minimal chat /&gt;</code>
   </tr>
   <tr>
     <th><code>people</code>
     <td><code>"off"</code>
     <td>Disable the participant list
-    <td><code>&lt;whereby-embed people=off /&gt;</code>
   </tr>
   <tr>
     <th><code>leaveButton</code>
     <td>Nothing (on) or <code>"off"</code>
     <td>Enable/disable the leave button
-    <td><code>&lt;whereby-embed leaveButton=off /&gt;</code> <code>&lt;whereby-embed minimal
-        leaveButton /&gt;</code>
   </tr>
   <tr>
     <th><code>screenshare</code>
     <td>Nothing (on) or <code>"off"</code>
     <td>Enable/disable screenshare
-    <td><code>&lt;whereby-embed screenshare=off /&gt;</code> <code>&lt;whereby-embed minimal
-        screenshare /&gt;</code>
   </tr>
   <tr>
     <th><code>floatSelf</code>
     <td>Nothing (on) or <code>"off"</code>
     <td>Float the self view to the bottom right
-    <td><code>&lt;whereby-embed floatSelf=off /&gt;</code> <code>&lt;whereby-embed minimal floatSelf /&gt;</code>
   </tr>
 </table>
+
+<h3>Usage examples</h3>
+
+<p>Basic room embedding:
+<code class=block>&lt;whereby-embed room="/your_room" /&gt;</code>
+
+<p>Room embedding with minimal UI:
+<code class=block>&lt;whereby-embed room="/your_room" minimal /&gt;</code>
+
+<p>Setting the display name for the current user, starting with audio
+  and video off:
+<code class=block>&lt;whereby-embed room="/your_room" displayName="John Smith" audio=off video=off /&gt;</code>
+
+<p>Removing the background to blend with the embedding app and turning
+  off some buttons:
+<code class=block>&lt;whereby-embed room="/your_room" background=off chat=off people=off leaveButton=off /&gt;</code>
+
+<p>Use a minimal UI but with the leave and screenshare buttons:
+<code class=block>&lt;whereby-embed minimal leaveButton screenshare /&gt;</code>
+
+<p>Disable the floating self view:
+<code class=block>&lt;whereby-embed room="/your_room" floatSelf=off /&gt;</code>
 
 <h2>Listening to events</h2>
 
