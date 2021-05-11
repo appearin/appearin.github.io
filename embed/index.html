@@ -31,20 +31,20 @@ output {
   &lt;script type=module
   src="https://whereby.dev/embed/whereby-embed.js"&gt;&lt;/script&gt;<br>
   &lt;style&gt;whereby-embed { <em>height: 700px;</em> }&lt;/style&gt;<br>
-  &lt;whereby-embed minimal subdomain=<em>yourcompany</em> room="<em>/your_room</em>"&gt;&lt;/whereby-embed&gt;
+  &lt;whereby-embed minimal room="https://<em>subdomain</em>.whereby.com/<em>your_room</em>"&gt;&lt;/whereby-embed&gt;
 </code>
 
 <p>It will then look something like this:</p>
 
 <script type=module src="./whereby-embed.js"></script>
 <style>whereby-embed { height: 700px; }</style>
-<whereby-embed minimal subdomain=businessdemo displayName="Embed demo" room="/check-check"></whereby-embed>
+<whereby-embed minimal displayName="Embed demo" room="https://businessdemo.whereby.com/check-check"></whereby-embed>
 
-<p>You can also use a shortcut of giving the room attribute your full
-  URL which is convenient when dealing with the API. This is also
-  required when you are using the <code>hostRoomUrl</code>:
+<p>You can also use the <code>hostRoomUrl</code> instead of
+  the <code>roomUrl</code>, if you want to give the user host
+  privileges:
 <code class=block>
-  &lt;whereby-embed room="<em>https://yourcompany.whereby.com/your_room?roomKey=3fe345a</em>"&gt;&lt;/whereby-embed&gt;
+  &lt;whereby-embed room="<em>https://subdomain.whereby.com/your_room?roomKey=3fe345a</em>"&gt;&lt;/whereby-embed&gt;
 </code>
 
 <h2 id=params>Attributes you can use</h2>
@@ -52,8 +52,8 @@ output {
   <thead><tr><th>Attribute <th>Value <th>Description </tr></thead>
   <tr>
     <th><code>room</code>
-    <td>A room id
-    <td>The id of the room you want to embed (required)
+    <td>A room URL
+    <td>The full URL of the room you want to embed (required)
   </tr>
   <tr>
     <th><code>minimal</code>
@@ -110,24 +110,24 @@ output {
 <h3>Usage examples</h3>
 
 <p>Basic room embedding:
-<code class=block>&lt;whereby-embed room="/your_room" /&gt;</code>
+<code class=block>&lt;whereby-embed room="https://subdomain.whereby.com/your_room" /&gt;</code>
 
 <p>Room embedding with minimal UI:
-<code class=block>&lt;whereby-embed room="/your_room" minimal /&gt;</code>
+<code class=block>&lt;whereby-embed room="https://subdomain.whereby.com/your_room" minimal /&gt;</code>
 
 <p>Setting the display name for the current user, starting with audio
   and video off:
-<code class=block>&lt;whereby-embed room="/your_room" displayName="John Smith" audio=off video=off /&gt;</code>
+<code class=block>&lt;whereby-embed room="https://subdomain.whereby.com/your_room" displayName="John Smith" audio=off video=off /&gt;</code>
 
 <p>Removing the background to blend with the embedding app and turning
   off some buttons:
-<code class=block>&lt;whereby-embed room="/your_room" background=off chat=off people=off leaveButton=off /&gt;</code>
+<code class=block>&lt;whereby-embed room="https://subdomain.whereby.com/your_room" background=off chat=off people=off leaveButton=off /&gt;</code>
 
 <p>Use a minimal UI but with the leave and screenshare buttons:
-<code class=block>&lt;whereby-embed minimal leaveButton screenshare /&gt;</code>
+<code class=block>&lt;whereby-embed room="https://subdomain.whereby.com/your_room" minimal leaveButton screenshare /&gt;</code>
 
 <p>Disable the floating self view:
-<code class=block>&lt;whereby-embed room="/your_room" floatSelf=off /&gt;</code>
+<code class=block>&lt;whereby-embed room="https://subdomain.whereby.com/your_room" floatSelf=off /&gt;</code>
 
 <h2>Listening to events</h2>
 
