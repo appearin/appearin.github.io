@@ -153,6 +153,11 @@ are supported:
     <td>{ count: Number }
   </tr>
   <tr>
+    <td><code>join</code>
+    <td>The local user joins
+    <td>&ndash;
+  </tr>
+  <tr>
     <td><code>leave</code>
     <td>The local user leaves
     <td>&ndash;
@@ -169,6 +174,7 @@ are supported:
   }
   elm.addEventListener("ready", logEvent)
   elm.addEventListener("participantupdate", logEvent)
+  elm.addEventListener("join", logEvent)
   elm.addEventListener("leave", logEvent)
 </pre>
 
@@ -183,6 +189,7 @@ are supported:
   }
   elm.addEventListener("ready", logEvent)
   elm.addEventListener("participantupdate", logEvent)
+  elm.addEventListener("join", logEvent)
   elm.addEventListener("leave", logEvent)
 </script>
 
