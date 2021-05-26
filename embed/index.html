@@ -173,6 +173,7 @@ are supported:
     output.innerText += `got event ${JSON.stringify({ type: event.type, detail: event.detail })}\n`;
   }
   elm.addEventListener("ready", logEvent)
+  elm.addEventListener("knock", logEvent)
   elm.addEventListener("participantupdate", logEvent)
   elm.addEventListener("join", logEvent)
   elm.addEventListener("leave", logEvent)
