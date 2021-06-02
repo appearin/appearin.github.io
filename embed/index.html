@@ -198,8 +198,8 @@ are supported:
   const url = new URL(location.href);
   const room = url.searchParams.get("room");
   const subdomain = url.searchParams.get("subdomain");
-  if (room) elm.room = room;
   if (subdomain) elm.subdomain = subdomain;
+  if (room) elm.room = room;
 </script>
 
 </body>
