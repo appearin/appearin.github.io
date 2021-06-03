@@ -197,9 +197,16 @@ are supported:
   const elm = document.querySelector("whereby-embed");
   const url = new URL(location.href);
   const room = url.searchParams.get("room");
+  const prefs = url.searchParams.get("prefs");
   const subdomain = url.searchParams.get("subdomain");
   if (subdomain) elm.subdomain = subdomain;
   if (room) elm.room = room;
+  if (prefs) {
+    prefs.split(",").forEach((p) => {
+      const [key, value] = p.split(":");
+      elm[key] = value;
+    });
+  }
 </script>
 
 </body>
